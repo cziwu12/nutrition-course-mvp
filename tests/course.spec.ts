@@ -48,9 +48,9 @@ test("learning, notes, resume, search, progress and reset survive navigation", a
   await page
     .getByRole("checkbox", { name: "阅读本周主题", exact: true })
     .check();
-  await page
-    .getByRole("checkbox", { name: "查看推荐资源", exact: true })
-    .check();
+  await expect(
+    page.getByRole("checkbox", { name: /查看推荐资源/ }),
+  ).not.toBeChecked();
   await page.getByRole("checkbox", { name: "我已完成本周实践任务" }).check();
   await expect(
     page.getByRole("checkbox", { name: "完成实践任务", exact: true }),
