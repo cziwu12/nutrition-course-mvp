@@ -1,18 +1,280 @@
-'use client';
-import Link from 'next/link';
-import { phases, weeks, Week, Resource, Video } from '@/data/course';
-import { useCourseProgress } from '@/lib/progress';
-import { Icon } from './shell';
-export function ProgressBar({value,label='学习进度'}:{value:number;label?:string}) { return <div className="progress-track" role="progressbar" aria-label={label} aria-valuenow={value} aria-valuemin={0} aria-valuemax={100}><span style={{width:`${value}%`}}/></div>; }
-export function WeekCard({week,compact=false}:{week:Week;compact?:boolean}) { const {percent,progress}=useCourseProgress(); const value=percent(week.week); const current=progress.currentWeek===week.week; return <Link href={`/course/week/${week.week}`} className={`week-card ${compact?'compact':''} ${current?'current':''} ${value===100?'completed':''}`}><span className="week-number">{value===100?<Icon name="check"/>:String(week.week).padStart(2,'0')}</span><div><strong>{week.titleZh}</strong>{!compact&&<><small>{week.titleEn}</small><p>{week.description}</p></>}</div><span className="week-state">{value===100?'已完成':current?'学习中':value>0?`${value}%`:<Icon name="arrow"/>}</span></Link>; }
-export function CoursePhaseCard({phase,compact=false}:{phase:typeof phases[number];compact?:boolean}) { const {percent}=useCourseProgress(); const items=weeks.filter(w=>w.month===phase.month); const completed=items.filter(w=>percent(w.week)===100).length; return <section className={`phase-card ${phase.color}`}><div className="phase-heading"><span className="phase-icon">{phase.icon}</span><div><small>MONTH {String(phase.month).padStart(2,'0')} <span>· 第 {items[0].week}–{items[3].week} 周</span></small><h3>{phase.title}</h3></div><span className="phase-count">{completed}/4</span></div>{!compact&&<p>{phase.description}</p>}<div className="phase-weeks">{items.map(w=><WeekCard key={w.week} week={w} compact={compact}/>)}</div></section>; }
-export function ResourceCard({resource,backlinks=false}:{resource:Resource;backlinks?:boolean}) { return <article className="resource-card"><div className="resource-top"><span className="resource-icon"><Icon name={resource.type==='video'?'play':'book'}/></span><span className="tag">{resource.type}</span></div><small>{resource.source}</small><h3>{resource.title}</h3><p>{resource.description}</p><div className="tags">{resource.tags.map(t=><span key={t}>{t}</span>)}</div>{resource.url?<a className="text-link" href={resource.url} target="_blank" rel="noopener noreferrer">阅读资料 <Icon name="external"/><span className="sr-only">（新窗口）</span></a>:<span className="muted">Resource to be added · 待补充</span>}{backlinks&&!!resource.weeks.length&&<div className="resource-weeks">相关课程 {resource.weeks.map(id=><Link key={id} href={`/course/week/${id}`}>第{id}周</Link>)}</div>}</article>; }
-export function youtubeEmbed(url?:string) {
- if(!url) return null;
- try { const u=new URL(url); if(u.protocol!=='https:')return null; const hosts=['youtube.com','www.youtube.com','m.youtube.com','youtube-nocookie.com','www.youtube-nocookie.com']; let id:string|null=null; if(u.hostname==='youtu.be') id=u.pathname.slice(1); else if(hosts.includes(u.hostname)) id=u.pathname==='/watch'?u.searchParams.get('v'):u.pathname.match(/^\/(?:embed|shorts)\/([\w-]+)$/)?.[1]??null; return id&&/^[\w-]{11}$/.test(id)?`https://www.youtube-nocookie.com/embed/${id}`:null; }catch{return null;}
+"use client";
+import Link from "next/link";
+import { phases, weeks, Week, Resource, Video } from "@/data/course";
+import { useCourseProgress } from "@/lib/progress";
+import { Icon } from "./shell";
+export function ProgressBar({
+  value,
+  label = "学习进度",
+}: {
+  value: number;
+  label?: string;
+}) {
+  return (
+    <div
+      className="progress-track"
+      role="progressbar"
+      aria-label={label}
+      aria-valuenow={value}
+      aria-valuemin={0}
+      aria-valuemax={100}
+    >
+      <span style={{ width: `${value}%` }} />
+    </div>
+  );
 }
-export function VideoCard({video}:{video:Video}) { const embed=youtubeEmbed(video.url); return embed?<article className="video-card"><iframe src={embed} title={video.title??'课程视频'} loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen referrerPolicy="strict-origin-when-cross-origin"/><h3>{video.title}</h3><p>{video.channel} · {video.description}</p></article>:<div className="video-placeholder"><Icon name="play"/><div><strong>本周视频待补充</strong><p>精选视频核验后将在这里显示。视频为选修，不影响本周完成进度。</p></div><span className="tag">即将补充</span></div>; }
-export function Checklist({week}:{week:Week}) { const {progress,check,ready}=useCourseProgress(); return <div className="checklist">{week.checklist.map(c=><label key={c.id}><input type="checkbox" checked={!!progress.weeks[week.week]?.checks[c.id]} disabled={!ready} onChange={e=>check(week.week,c.id,e.target.checked)}/><span>{c.label}{!c.required&&<small>选修 · 内容待补充</small>}</span></label>)}</div>; }
-export function VocabularyCard({week}:{week:Week}) {return <div className="vocabulary">{week.vocabulary.map(v=><div key={v.en}><strong>{v.en}</strong><span>{v.zh}</span></div>)}</div>;}
-export function PracticalTaskCard({week}:{week:Week}) {const {progress,check,ready}=useCourseProgress();return <section className="practical panel"><span className="eyebrow">BRING IT TO YOUR TABLE</span><h2>实践任务</h2><p>{week.practicalTask}</p><label className="practice-check"><input type="checkbox" checked={!!progress.weeks[week.week]?.checks.practice} disabled={!ready} onChange={e=>check(week.week,'practice',e.target.checked)}/> 我已完成本周实践任务</label></section>;}
-export function WeekNavigation({id}:{id:number}) {return <nav className="week-nav" aria-label="周导航">{id>1?<Link href={`/course/week/${id-1}`}>← 上一周 <small>{weeks[id-2].titleZh}</small></Link>:<span/>}<Link href="/course">返回课程路线</Link>{id<24?<Link href={`/course/week/${id+1}`}>下一周 → <small>{weeks[id].titleZh}</small></Link>:<Link href="/progress">查看学习成果 →</Link>}</nav>;}
+export function WeekCard({
+  week,
+  compact = false,
+}: {
+  week: Week;
+  compact?: boolean;
+}) {
+  const { percent, progress } = useCourseProgress();
+  const value = percent(week.week);
+  const current = progress.currentWeek === week.week;
+  return (
+    <Link
+      href={`/course/week/${week.week}`}
+      className={`week-card ${compact ? "compact" : ""} ${current ? "current" : ""} ${value === 100 ? "completed" : ""}`}
+    >
+      <span className="week-number">
+        {value === 100 ? (
+          <Icon name="check" />
+        ) : (
+          String(week.week).padStart(2, "0")
+        )}
+      </span>
+      <div>
+        <strong>{week.titleZh}</strong>
+        {!compact && (
+          <>
+            <small>{week.titleEn}</small>
+            <p>{week.description}</p>
+          </>
+        )}
+      </div>
+      <span className="week-state">
+        {value === 100 ? (
+          "已完成"
+        ) : current ? (
+          "学习中"
+        ) : value > 0 ? (
+          `${value}%`
+        ) : (
+          <Icon name="arrow" />
+        )}
+      </span>
+    </Link>
+  );
+}
+export function CoursePhaseCard({
+  phase,
+  compact = false,
+}: {
+  phase: (typeof phases)[number];
+  compact?: boolean;
+}) {
+  const { percent } = useCourseProgress();
+  const items = weeks.filter((w) => w.month === phase.month);
+  const completed = items.filter((w) => percent(w.week) === 100).length;
+  return (
+    <section className={`phase-card ${phase.color}`}>
+      <div className="phase-heading">
+        <span className="phase-icon">{phase.icon}</span>
+        <div>
+          <small>
+            MONTH {String(phase.month).padStart(2, "0")}{" "}
+            <span>
+              · 第 {items[0].week}–{items[3].week} 周
+            </span>
+          </small>
+          <h3>{phase.title}</h3>
+        </div>
+        <span className="phase-count">{completed}/4</span>
+      </div>
+      {!compact && <p>{phase.description}</p>}
+      <div className="phase-weeks">
+        {items.map((w) => (
+          <WeekCard key={w.week} week={w} compact={compact} />
+        ))}
+      </div>
+    </section>
+  );
+}
+export function ResourceCard({
+  resource,
+  backlinks = false,
+}: {
+  resource: Resource;
+  backlinks?: boolean;
+}) {
+  return (
+    <article className="resource-card">
+      <div className="resource-top">
+        <span className="resource-icon">
+          <Icon name={resource.type === "video" ? "play" : "book"} />
+        </span>
+        <span className="tag">{resource.type}</span>
+      </div>
+      <small>{resource.source}</small>
+      <h3>{resource.title}</h3>
+      <p>{resource.description}</p>
+      <div className="tags">
+        {resource.tags.map((t) => (
+          <span key={t}>{t}</span>
+        ))}
+      </div>
+      {resource.url ? (
+        <a
+          className="text-link"
+          href={resource.url}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          阅读资料 <Icon name="external" />
+          <span className="sr-only">（新窗口）</span>
+        </a>
+      ) : (
+        <span className="muted">Resource to be added · 待补充</span>
+      )}
+      {backlinks && !!resource.weeks.length && (
+        <div className="resource-weeks">
+          相关课程{" "}
+          {resource.weeks.map((id) => (
+            <Link key={id} href={`/course/week/${id}`}>
+              第{id}周
+            </Link>
+          ))}
+        </div>
+      )}
+    </article>
+  );
+}
+export function youtubeEmbed(url?: string) {
+  if (!url) return null;
+  try {
+    const u = new URL(url);
+    if (u.protocol !== "https:") return null;
+    const hosts = [
+      "youtube.com",
+      "www.youtube.com",
+      "m.youtube.com",
+      "youtube-nocookie.com",
+      "www.youtube-nocookie.com",
+    ];
+    let id: string | null = null;
+    if (u.hostname === "youtu.be") id = u.pathname.slice(1);
+    else if (hosts.includes(u.hostname))
+      id =
+        u.pathname === "/watch"
+          ? u.searchParams.get("v")
+          : (u.pathname.match(/^\/(?:embed|shorts)\/([\w-]+)$/)?.[1] ?? null);
+    return id && /^[\w-]{11}$/.test(id)
+      ? `https://www.youtube-nocookie.com/embed/${id}`
+      : null;
+  } catch {
+    return null;
+  }
+}
+export function VideoCard({ video }: { video: Video }) {
+  const embed = youtubeEmbed(video.url);
+  return embed ? (
+    <article className="video-card">
+      <iframe
+        src={embed}
+        title={video.title ?? "课程视频"}
+        loading="lazy"
+        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowFullScreen
+        referrerPolicy="strict-origin-when-cross-origin"
+      />
+      <h3>{video.title}</h3>
+      <p>
+        {video.channel} · {video.description}
+      </p>
+    </article>
+  ) : (
+    <div className="video-placeholder">
+      <Icon name="play" />
+      <div>
+        <strong>本周视频待补充</strong>
+        <p>精选视频核验后将在这里显示。视频为选修，不影响本周完成进度。</p>
+      </div>
+      <span className="tag">即将补充</span>
+    </div>
+  );
+}
+export function Checklist({ week }: { week: Week }) {
+  const { progress, check, ready } = useCourseProgress();
+  return (
+    <div className="checklist">
+      {week.checklist.map((c) => (
+        <label key={c.id}>
+          <input
+            type="checkbox"
+            checked={!!progress.weeks[week.week]?.checks[c.id]}
+            disabled={!ready}
+            onChange={(e) => check(week.week, c.id, e.target.checked)}
+          />
+          <span>
+            {c.label}
+            {!c.required && <small>选修 · 内容待补充</small>}
+          </span>
+        </label>
+      ))}
+    </div>
+  );
+}
+export function VocabularyCard({ week }: { week: Week }) {
+  return (
+    <div className="vocabulary">
+      {week.vocabulary.map((v) => (
+        <div key={v.en}>
+          <strong>{v.en}</strong>
+          <span>{v.zh}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+export function PracticalTaskCard({ week }: { week: Week }) {
+  const { progress, check, ready } = useCourseProgress();
+  return (
+    <section className="practical panel">
+      <span className="eyebrow">BRING IT TO YOUR TABLE</span>
+      <h2>实践任务</h2>
+      <p>{week.practicalTask}</p>
+      <label className="practice-check">
+        <input
+          type="checkbox"
+          checked={!!progress.weeks[week.week]?.checks.practice}
+          disabled={!ready}
+          onChange={(e) => check(week.week, "practice", e.target.checked)}
+        />{" "}
+        我已完成本周实践任务
+      </label>
+    </section>
+  );
+}
+export function WeekNavigation({ id }: { id: number }) {
+  return (
+    <nav className="week-nav" aria-label="周导航">
+      {id > 1 ? (
+        <Link href={`/course/week/${id - 1}`}>
+          ← 上一周 <small>{weeks[id - 2].titleZh}</small>
+        </Link>
+      ) : (
+        <span />
+      )}
+      <Link href="/course">返回课程路线</Link>
+      {id < 24 ? (
+        <Link href={`/course/week/${id + 1}`}>
+          下一周 → <small>{weeks[id].titleZh}</small>
+        </Link>
+      ) : (
+        <Link href="/progress">查看学习成果 →</Link>
+      )}
+    </nav>
+  );
+}

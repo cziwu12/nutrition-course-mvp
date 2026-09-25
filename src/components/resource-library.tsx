@@ -1,0 +1,91 @@
+"use client";
+import { useState } from "react";
+import { resources } from "@/data/course";
+import { ResourceCard } from "@/components/course";
+const sources = [
+  "全部来源",
+  "WHO",
+  "NIH Office of Dietary Supplements",
+  "Harvard Nutrition Source",
+  "KKM / Ministry of Health Malaysia",
+  "YouTube",
+  "Other trusted sources",
+];
+export function ResourceLibrary({ initialQuery }: { initialQuery: string }) {
+  const [source, setSource] = useState("全部来源");
+  const [query, setQuery] = useState(initialQuery);
+  const filtered = resources.filter(
+    (r) =>
+      (source === "全部来源" || r.source === source) &&
+      [r.title, r.description, ...r.tags]
+        .join(" ")
+        .toLowerCase()
+        .replace(/\s/g, "")
+        .includes(query.toLowerCase().replace(/\s/g, "")),
+  );
+  return (
+    <>
+      <div className="page-top">
+        <div>
+          <span className="eyebrow">A RELIABLE PLACE TO START</span>
+          <h1>学习资源馆</h1>
+          <p>可信的知识来源，支持你对日常饮食的每一次思考。</p>
+        </div>
+      </div>
+      <section className="panel resource-filters">
+        <div>
+          <label htmlFor="resource-source">按来源筛选</label>
+          <select
+            id="resource-source"
+            value={source}
+            onChange={(e) => setSource(e.target.value)}
+          >
+            {sources.map((s) => (
+              <option key={s}>{s}</option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label htmlFor="resource-query">搜索主题或关键词</label>
+          <input
+            id="resource-query"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="例如 protein、维生素D、家庭菜单"
+          />
+        </div>
+      </section>
+      <p className="muted" role="status">
+        找到 {filtered.length} 项资源 · 官方网页优先，待核验内容明确标注
+      </p>
+      {sources.slice(1).map((s) => {
+        const items = filtered.filter((r) => r.source === s);
+        return items.length ? (
+          <section key={s} className="resource-group">
+            <h2>{s}</h2>
+            <div className="resource-library-grid">
+              {items.map((r) => (
+                <ResourceCard key={r.id} resource={r} backlinks />
+              ))}
+            </div>
+          </section>
+        ) : null;
+      })}
+      {!filtered.length && (
+        <div className="empty-state">
+          <h2>暂时没有匹配的资源</h2>
+          <p>试试其他关键词，或切换到全部来源。</p>
+          <button
+            className="button secondary"
+            onClick={() => {
+              setSource("全部来源");
+              setQuery("");
+            }}
+          >
+            清除筛选
+          </button>
+        </div>
+      )}
+    </>
+  );
+}

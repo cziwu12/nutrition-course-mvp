@@ -1,5 +1,81 @@
-'use client';
-import { useRef,useState } from 'react';
-import { useCourseProgress } from '@/lib/progress';
-import { disclaimer,disclaimerEn } from '@/data/course';
-export default function SettingsPage(){const {reset,ready}=useCourseProgress();const dialog=useRef<HTMLDialogElement>(null);const trigger=useRef<HTMLButtonElement>(null);const [message,setMessage]=useState('');return <><div className="page-top"><div><span className="eyebrow">YOUR LEARNING SPACE</span><h1>学习设置</h1><p>简单管理你的个人学习记录。</p></div></div><section className="panel settings-panel"><h2>关于进度与笔记</h2><p>学习清单、当前周数与笔记自动保存在此设备的此浏览器中。无需登录，不会上传到服务器，也不会跨设备同步。</p><p>清除浏览器数据或使用隐私模式可能导致记录丢失。重要笔记请另外保留副本。</p><p>总进度按已完成的必修清单计算；一周所有必修项目完成后，计为已完成的一周。</p></section><section className="panel settings-panel"><h2>重新开始课程</h2><p>这会删除此浏览器中的所有课程进度、学习笔记及活动记录，恢复到第1周。</p><button ref={trigger} disabled={!ready} className="button danger" onClick={()=>dialog.current?.showModal()}>重置课程进度</button><p role="status">{message}</p></section><section className="panel settings-panel"><h2>教育用途说明</h2><p>{disclaimer}</p><p>{disclaimerEn}</p></section><dialog ref={dialog} aria-labelledby="reset-title" onClose={()=>trigger.current?.focus()}><h2 id="reset-title">确定重新开始吗？</h2><p>全部24周的进度、个人笔记和学习记录将被删除。此操作无法撤销。</p><div className="dialog-actions"><button autoFocus className="button secondary" onClick={()=>dialog.current?.close()}>保留我的记录</button><button className="button danger" onClick={()=>{if(reset()){dialog.current?.close();setMessage('课程进度已重置。随时可以开始新的学习旅程。');}}}>确认重置全部记录</button></div></dialog></>}
+"use client";
+import { useRef, useState } from "react";
+import { useCourseProgress } from "@/lib/progress";
+import { disclaimer, disclaimerEn } from "@/data/course";
+export default function SettingsPage() {
+  const { reset, ready } = useCourseProgress();
+  const dialog = useRef<HTMLDialogElement>(null);
+  const trigger = useRef<HTMLButtonElement>(null);
+  const [message, setMessage] = useState("");
+  return (
+    <>
+      <div className="page-top">
+        <div>
+          <span className="eyebrow">YOUR LEARNING SPACE</span>
+          <h1>学习设置</h1>
+          <p>简单管理你的个人学习记录。</p>
+        </div>
+      </div>
+      <section className="panel settings-panel">
+        <h2>关于进度与笔记</h2>
+        <p>
+          学习清单、当前周数与笔记自动保存在此设备的此浏览器中。无需登录，不会上传到服务器，也不会跨设备同步。
+        </p>
+        <p>
+          清除浏览器数据或使用隐私模式可能导致记录丢失。重要笔记请另外保留副本。
+        </p>
+        <p>
+          总进度按已完成的必修清单计算；一周所有必修项目完成后，计为已完成的一周。
+        </p>
+      </section>
+      <section className="panel settings-panel">
+        <h2>重新开始课程</h2>
+        <p>
+          这会删除此浏览器中的所有课程进度、学习笔记及活动记录，恢复到第1周。
+        </p>
+        <button
+          ref={trigger}
+          disabled={!ready}
+          className="button danger"
+          onClick={() => dialog.current?.showModal()}
+        >
+          重置课程进度
+        </button>
+        <p role="status">{message}</p>
+      </section>
+      <section className="panel settings-panel">
+        <h2>教育用途说明</h2>
+        <p>{disclaimer}</p>
+        <p>{disclaimerEn}</p>
+      </section>
+      <dialog
+        ref={dialog}
+        aria-labelledby="reset-title"
+        onClose={() => trigger.current?.focus()}
+      >
+        <h2 id="reset-title">确定重新开始吗？</h2>
+        <p>全部24周的进度、个人笔记和学习记录将被删除。此操作无法撤销。</p>
+        <div className="dialog-actions">
+          <button
+            autoFocus
+            className="button secondary"
+            onClick={() => dialog.current?.close()}
+          >
+            保留我的记录
+          </button>
+          <button
+            className="button danger"
+            onClick={() => {
+              if (reset()) {
+                dialog.current?.close();
+                setMessage("课程进度已重置。随时可以开始新的学习旅程。");
+              }
+            }}
+          >
+            确认重置全部记录
+          </button>
+        </div>
+      </dialog>
+    </>
+  );
+}
