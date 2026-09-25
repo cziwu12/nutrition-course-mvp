@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { CourseProvider } from "@/lib/progress";
+import { LanguageProvider } from "@/lib/language";
 import { Shell } from "@/components/shell";
 export const metadata: Metadata = {
   title: "好好吃 · 家庭营养学习室",
@@ -14,9 +15,11 @@ export default function RootLayout({
   return (
     <html lang="zh-Hans">
       <body>
-        <CourseProvider>
-          <Shell>{children}</Shell>
-        </CourseProvider>
+        <LanguageProvider>
+          <CourseProvider>
+            <Shell>{children}</Shell>
+          </CourseProvider>
+        </LanguageProvider>
       </body>
     </html>
   );

@@ -77,6 +77,7 @@ function useProgressState() {
       weeks: {
         ...p.weeks,
         [week]: {
+          ...p.weeks[week],
           notes: p.weeks[week]?.notes ?? "",
           checks: { ...p.weeks[week]?.checks, [id]: value },
         },
@@ -95,7 +96,24 @@ function useProgressState() {
       ...p,
       weeks: {
         ...p.weeks,
-        [week]: { checks: p.weeks[week]?.checks ?? {}, notes },
+        [week]: {
+          ...p.weeks[week],
+          checks: p.weeks[week]?.checks ?? {},
+          notes,
+        },
+      },
+    }));
+  const answer = (week: number, questionId: string, optionId: string) =>
+    update((p) => ({
+      ...p,
+      weeks: {
+        ...p.weeks,
+        [week]: {
+          ...p.weeks[week],
+          checks: p.weeks[week]?.checks ?? {},
+          notes: p.weeks[week]?.notes ?? "",
+          answers: { ...p.weeks[week]?.answers, [questionId]: optionId },
+        },
       },
     }));
   const reset = () => {
@@ -117,6 +135,7 @@ function useProgressState() {
     ready,
     error,
     visit,
+    answer,
     check,
     note,
     reset,

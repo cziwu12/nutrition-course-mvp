@@ -1,4 +1,5 @@
 "use client";
+import { LanguageSelector, useLanguage } from "@/lib/language";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -89,6 +90,14 @@ const nav = [
   ["/settings", "settings", "设置"],
 ];
 export function Shell({ children }: { children: React.ReactNode }) {
+  const { t } = useLanguage();
+  const navEn: Record<string, string> = {
+    "/": "Home",
+    "/course": "Course",
+    "/resources": "Resources",
+    "/progress": "Progress",
+    "/settings": "Settings",
+  };
   const path = usePathname();
   const [query, setQuery] = useState("");
   const { error, stats } = useCourseProgress();
@@ -115,8 +124,10 @@ export function Shell({ children }: { children: React.ReactNode }) {
             好好吃<small>NOURISH & LEARN</small>
           </span>
         </Link>
-        <div className="side-label">我的学习空间</div>
-        <nav aria-label="主导航">
+        <div className="side-label">
+          {t("我的学习空间", "MY LEARNING SPACE")}
+        </div>
+        <nav aria-label={t("主导航", "Main navigation")}>
           {nav.map(([href, icon, label]) => (
             <Link
               key={href}
@@ -128,14 +139,14 @@ export function Shell({ children }: { children: React.ReactNode }) {
               }
             >
               <Icon name={icon} />
-              <span>{label}</span>
+              <span>{t(label, navEn[href])}</span>
             </Link>
           ))}
         </nav>
         <div className="sidebar-bottom">
           <div className="side-note">
             <Icon name="leaf" />
-            <strong>好习惯，从一餐开始</strong>
+            <strong>{t("好习惯，从一餐开始", "One meal at a time")}</strong>
             <p>
               不用急，按照自己的节奏，
               <br />
@@ -153,16 +164,26 @@ export function Shell({ children }: { children: React.ReactNode }) {
       <div className="workspace">
         <header className="topbar">
           <span className="breadcrumb">
-            家庭营养学习室 <span>/</span>{" "}
-            {nav.find(([href]) =>
-              href === "/" ? path === "/" : path.startsWith(href),
-            )?.[2] ?? "课程"}
+            {t("家庭营养学习室", "Family nutrition studio")} <span>/</span>{" "}
+            {t(
+              nav.find(([href]) =>
+                href === "/" ? path === "/" : path.startsWith(href),
+              )?.[2] ?? "课程",
+              navEn[
+                nav.find(([href]) =>
+                  href === "/" ? path === "/" : path.startsWith(href),
+                )?.[0] ?? "/course"
+              ],
+            )}
           </span>
           <div className="search-wrap">
             <Icon name="search" />
             <input
-              aria-label="搜索课程与资源"
-              placeholder="搜索课程、营养知识…"
+              aria-label={t("搜索课程与资源", "Search course and resources")}
+              placeholder={t(
+                "搜索课程、营养知识…",
+                "Search lessons and topics…",
+              )}
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               onKeyDown={(e) => {
@@ -170,7 +191,10 @@ export function Shell({ children }: { children: React.ReactNode }) {
               }}
             />
             {query && (
-              <button aria-label="清除搜索" onClick={() => setQuery("")}>
+              <button
+                aria-label={t("清除搜索", "Clear search")}
+                onClick={() => setQuery("")}
+              >
                 ×
               </button>
             )}
@@ -183,7 +207,8 @@ export function Shell({ children }: { children: React.ReactNode }) {
                     key={w.week}
                     href={`/course/week/${w.week}`}
                   >
-                    <small>第 {w.week} 周</small> {w.titleZh}
+                    <small>{t(`第 ${w.week} 周`, `Week ${w.week}`)}</small>{" "}
+                    {t(w.titleZh, w.titleEn)}
                     <span>{w.titleEn}</span>
                   </Link>
                 ))}
@@ -202,7 +227,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
               </div>
             )}
           </div>
-          <span className="top-avatar">我</span>
+          <LanguageSelector />
         </header>
         <main id="main" tabIndex={-1}>
           {error && (

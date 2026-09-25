@@ -1,5 +1,9 @@
 import { weeks } from "../data/course";
-export type WeekProgress = { checks: Record<string, boolean>; notes: string };
+export type WeekProgress = {
+  checks: Record<string, boolean>;
+  notes: string;
+  answers?: Record<string, string>;
+};
 export type Progress = {
   version: 1;
   currentWeek: number;
@@ -34,6 +38,11 @@ export function parseProgress(raw: string | null): Progress {
     const saved = input.weeks[week.week];
     if (!saved || typeof saved !== "object") continue;
     result.weeks[week.week] = {
+      answers: Object.fromEntries(
+        (week.lesson.status === "published" ? week.lesson.questions : [])
+          .filter((q) => q.options.some((o) => o.id === saved.answers?.[q.id]))
+          .map((q) => [q.id, saved.answers[q.id]]),
+      ),
       notes: typeof saved.notes === "string" ? saved.notes : "",
       checks: Object.fromEntries(
         week.checklist.map((c) => [c.id, saved.checks?.[c.id] === true]),

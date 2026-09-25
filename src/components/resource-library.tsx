@@ -4,12 +4,7 @@ import { resources } from "@/data/course";
 import { ResourceCard } from "@/components/course";
 const sources = [
   "全部来源",
-  "WHO",
-  "NIH Office of Dietary Supplements",
-  "Harvard Nutrition Source",
-  "KKM / Ministry of Health Malaysia",
-  "YouTube",
-  "Other trusted sources",
+  ...new Set(resources.map((resource) => resource.source)),
 ];
 export function ResourceLibrary({ initialQuery }: { initialQuery: string }) {
   const [source, setSource] = useState("全部来源");
@@ -17,7 +12,13 @@ export function ResourceLibrary({ initialQuery }: { initialQuery: string }) {
   const filtered = resources.filter(
     (r) =>
       (source === "全部来源" || r.source === source) &&
-      [r.title, r.description, ...r.tags]
+      [
+        r.title,
+        r.titleEn ?? "",
+        r.description,
+        r.descriptionEn ?? "",
+        ...r.tags,
+      ]
         .join(" ")
         .toLowerCase()
         .replace(/\s/g, "")
