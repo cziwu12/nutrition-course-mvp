@@ -1,6 +1,7 @@
 export type Language = "zh" | "en";
 export type Localized<T = string> = Record<Language, T>;
 export type LessonBlock =
+  | { type: "process"; steps: { title: string; description: string }[] }
   | { type: "paragraph" | "heading"; text: string }
   | { type: "bulletList"; items: string[] }
   | {

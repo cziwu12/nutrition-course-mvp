@@ -1,9 +1,21 @@
 "use client";
 import { useLanguage } from "@/lib/language";
 import { useCourseProgress } from "@/lib/progress";
-import type { LessonBlock, Lesson, Question } from "@/data/course";
+import { VideoCard } from "./course";
+import type { LessonBlock, Lesson, Question, Video } from "@/data/course";
 export function LessonBlockView({ block }: { block: LessonBlock }) {
   switch (block.type) {
+    case "process":
+      return (
+        <ol className="lesson-process">
+          {block.steps.map((step) => (
+            <li key={step.title}>
+              <strong>{step.title}</strong>
+              <span>{step.description}</span>
+            </li>
+          ))}
+        </ol>
+      );
     case "paragraph":
       return <p>{block.text}</p>;
     case "heading":
@@ -47,7 +59,13 @@ export function LessonBlockView({ block }: { block: LessonBlock }) {
       );
   }
 }
-export function LessonSections({ lesson }: { lesson: Lesson }) {
+export function LessonSections({
+  lesson,
+  videos = [],
+}: {
+  lesson: Lesson;
+  videos?: Video[];
+}) {
   const { language, t } = useLanguage();
   return (
     <>
@@ -62,6 +80,11 @@ export function LessonSections({ lesson }: { lesson: Lesson }) {
           {section.content[language].map((block, i) => (
             <LessonBlockView block={block} key={i} />
           ))}
+          {videos
+            .filter((video) => video.afterSection === section.id)
+            .map((video) => (
+              <VideoCard key={video.youtubeId} video={video} />
+            ))}
           <div className="section-term-links">
             <span>{t("相关术语", "Related terms")}</span>
             {section.termIds.map((id) => {

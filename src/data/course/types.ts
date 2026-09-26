@@ -14,6 +14,8 @@ export type Resource = {
 export type Video = {
   title?: string;
   youtubeId?: string;
+  afterSection?: string;
+  verifiedAt?: string;
   titleEn?: string;
   descriptionEn?: string;
   channel?: string;

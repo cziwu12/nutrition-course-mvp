@@ -2598,3 +2598,33 @@ dialog p {
     overflow: visible;
   }
 }
+.lesson-process {
+  list-style: none;
+  padding: 0;
+  counter-reset: route;
+  display: grid;
+  gap: 10px;
+}
+.lesson-process li {
+  counter-increment: route;
+  padding: 14px 16px 14px 56px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--white);
+  position: relative;
+}
+.lesson-process li::before {
+  content: counter(route);
+  position: absolute;
+  left: 16px;
+  top: 15px;
+  color: var(--green);
+  font-weight: 700;
+}
+.lesson-process strong,
+.lesson-process span {
+  display: block;
+}
+.lesson-process span {
+  margin-top: 4px;
+}

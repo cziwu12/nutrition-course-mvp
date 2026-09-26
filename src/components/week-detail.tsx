@@ -128,7 +128,7 @@ export function WeekDetail({ week }: { week: Week }) {
             </ul>
           </section>
           {lesson ? (
-            <LessonSections lesson={lesson} />
+            <LessonSections lesson={lesson} videos={week.videos} />
           ) : (
             <section className="reading-section development-notice">
               <span className="pill">
@@ -167,9 +167,19 @@ export function WeekDetail({ week }: { week: Week }) {
           {lesson && <KeyTerms lesson={lesson} />}
           <section id="lesson-videos" className="reading-section">
             <h2>{t("视频辅助学习", "Watch and revisit")}</h2>
-            {week.videos.map((video, i) => (
-              <VideoCard key={i} video={video} />
-            ))}
+            {week.videos.some((v) => v.afterSection) && (
+              <p>
+                {t(
+                  "本周视频已放在相关正文段落中，均为选修。",
+                  "This week’s optional videos appear alongside the relevant lesson sections.",
+                )}
+              </p>
+            )}
+            {week.videos
+              .filter((video) => !video.afterSection)
+              .map((video, i) => (
+                <VideoCard key={i} video={video} />
+              ))}
           </section>
           {lesson && <QuickChecks lesson={lesson} week={week.week} />}
           <section id="lesson-practice" className="reading-section">

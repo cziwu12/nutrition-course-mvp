@@ -237,6 +237,17 @@ export function VideoCard({ video }: { video: Video }) {
           video.descriptionEn ?? video.description ?? "",
         )}
       </p>
+      <a
+        className="text-link"
+        href={`https://www.youtube.com/watch?v=${embed.split("/").pop()}`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {t(
+          "若视频无法播放，在 YouTube 打开（新窗口）",
+          "If the player is unavailable, watch on YouTube (new tab)",
+        )}
+      </a>
     </article>
   ) : (
     <div className="video-placeholder">
