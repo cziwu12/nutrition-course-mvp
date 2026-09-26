@@ -1,7 +1,7 @@
 import type { Week } from "./types";
 import { videosByWeek } from "./videos";
 import { seeds } from "./curriculum";
-import { week01Lesson } from "./weeks/week01";
+import { lessons } from "./lessons";
 export type { Week, Resource, Video } from "./types";
 export * from "./lesson-types";
 export { phases } from "./phases";
@@ -26,7 +26,7 @@ export const weeks: Week[] = seeds.map(
     });
     const resourceIds = ids.split(",");
     return {
-      lesson: i === 0 ? week01Lesson : { status: "developing" },
+      lesson: lessons[i + 1] ?? { status: "developing" },
       week: i + 1,
       month: Math.floor(i / 4) + 1,
       titleZh,
@@ -37,7 +37,7 @@ export const weeks: Week[] = seeds.map(
       objectives: goals.split("|"),
       practicalTask,
       reflection,
-      resourceIds: i === 0 ? week01Lesson.sourceIds : resourceIds,
+      resourceIds: lessons[i + 1]?.sourceIds ?? resourceIds,
       videos: videosByWeek[i + 1]?.length ? videosByWeek[i + 1] : [{}],
       checklist: [
         { id: "topics", label: "阅读本周主题", required: true },
@@ -61,6 +61,9 @@ export function searchWeeks(query: string) {
       w.titleEn,
       w.description,
       ...w.topics.flatMap((t) => [t.zh, t.en]),
+      ...(w.lesson.status === "published"
+        ? w.lesson.keyTerms.flatMap((t) => [t.term.zh, t.term.en])
+        : []),
     ]
       .join(" ")
       .toLowerCase()

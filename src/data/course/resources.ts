@@ -1,5 +1,9 @@
+import { lessons } from "./lessons";
+import { videosByWeek } from "./videos";
 import type { Resource } from "./types";
+import { micronutrientResources } from "./micronutrient-resources";
 export const resources: Resource[] = [
+  ...micronutrientResources,
   {
     id: "who",
     titleEn: "Healthy diet",
@@ -45,15 +49,6 @@ export const resources: Resource[] = [
     weeks: [19, 20],
   },
   {
-    id: "gut",
-    title: "消化与肠道健康资源",
-    source: "Other trusted sources",
-    description: "Resource to be added · 专题阅读待核验。",
-    type: "article",
-    tags: ["gut health", "消化系统"],
-    weeks: [7, 8],
-  },
-  {
     id: "evidence",
     title: "科学研究与证据评估资源",
     source: "Other trusted sources",
@@ -61,16 +56,6 @@ export const resources: Resource[] = [
     type: "article",
     tags: ["科学研究", "营养误区"],
     weeks: [12, 21, 22],
-  },
-  {
-    id: "youtube",
-    title: "课程视频待补充",
-    source: "YouTube",
-    description:
-      "尚未选定视频。核验标题、频道与链接后加入课程；当前视频学习为选修。",
-    type: "video",
-    tags: ["视频"],
-    weeks: [],
   },
 ];
 
@@ -115,3 +100,150 @@ resources.push(
     weeks: [1],
   },
 );
+
+resources.push(
+  {
+    id: "carbs",
+    title: "碳水化合物",
+    titleEn: "Carbohydrates",
+    source: "Harvard Nutrition Source",
+    description: "碳水类型与食物质量。",
+    descriptionEn: "Carbohydrate types and food quality.",
+    url: "https://nutritionsource.hsph.harvard.edu/carbohydrates/",
+    type: "article",
+    tags: ["carbohydrates"],
+    weeks: [2],
+  },
+  {
+    id: "fibre-guide",
+    title: "膳食纤维",
+    titleEn: "Fibre",
+    source: "Harvard Nutrition Source",
+    description: "纤维类型与常见食物来源。",
+    descriptionEn: "Fibre types and common food sources.",
+    url: "https://nutritionsource.hsph.harvard.edu/carbohydrates/fiber/",
+    type: "article",
+    tags: ["fibre"],
+    weeks: [2, 8, 15],
+  },
+  {
+    id: "whole-grains",
+    title: "全谷物",
+    titleEn: "Whole grains",
+    source: "Harvard Nutrition Source",
+    description: "谷物结构与食物选择。",
+    descriptionEn: "Grain structure and food choices.",
+    url: "https://nutritionsource.hsph.harvard.edu/what-should-you-eat/whole-grains/",
+    type: "article",
+    tags: ["whole grains"],
+    weeks: [2],
+  },
+  {
+    id: "gi-guide",
+    title: "碳水与血糖",
+    titleEn: "Carbohydrates and blood sugar",
+    source: "Harvard Nutrition Source",
+    description: "GI 与血糖反应的背景。",
+    descriptionEn: "Background on GI and blood-glucose response.",
+    url: "https://nutritionsource.hsph.harvard.edu/carbohydrates/carbohydrates-and-blood-sugar/",
+    type: "article",
+    tags: ["GI", "diabetes"],
+    weeks: [2, 9],
+  },
+  {
+    id: "digestion",
+    title: "消化系统如何工作",
+    titleEn: "Your digestive system & how it works",
+    source: "NIDDK",
+    description: "消化、吸收与器官分工。",
+    descriptionEn: "Digestion, absorption and organ roles.",
+    url: "https://www.niddk.nih.gov/health-information/digestive-diseases/digestive-system-how-it-works",
+    type: "official guide",
+    tags: ["digestion"],
+    weeks: [2, 3, 7],
+  },
+  {
+    id: "protein-guide",
+    title: "蛋白质",
+    titleEn: "Protein",
+    source: "Harvard Nutrition Source",
+    description: "氨基酸、食物来源与需要量的背景。",
+    descriptionEn: "Amino acids, food sources and requirements.",
+    url: "https://nutritionsource.hsph.harvard.edu/what-should-you-eat/protein/",
+    type: "article",
+    tags: ["protein"],
+    weeks: [3, 16],
+  },
+);
+
+resources.push(
+  {
+    id: "fats-guide",
+    title: "脂肪与胆固醇",
+    titleEn: "Fats and cholesterol",
+    source: "Harvard Nutrition Source",
+    description: "脂肪种类与替代食物的背景。",
+    descriptionEn: "Fat types and replacement foods.",
+    url: "https://nutritionsource.hsph.harvard.edu/what-should-you-eat/fats-and-cholesterol/",
+    type: "article",
+    tags: ["fat"],
+    weeks: [4, 10],
+  },
+  {
+    id: "heart-lipids",
+    title: "LDL、HDL 与甘油三酯",
+    titleEn: "LDL, HDL and triglycerides",
+    source: "American Heart Association",
+    description: "血脂指标的基本解释。",
+    descriptionEn: "An introduction to blood lipid measures.",
+    url: "https://www.heart.org/en/health-topics/cholesterol/hdl-good-ldl-bad-cholesterol-and-triglycerides",
+    type: "article",
+    tags: ["cholesterol"],
+    weeks: [4, 10],
+  },
+  {
+    id: "omega-guide",
+    title: "Omega-3 脂肪酸资料",
+    titleEn: "Omega-3 fatty acids",
+    source: "NIH Office of Dietary Supplements",
+    description: "脂肪酸来源、用途与安全背景。",
+    descriptionEn: "Sources, roles and safety context.",
+    url: "https://ods.od.nih.gov/factsheets/Omega3FattyAcids-Consumer/",
+    type: "official guide",
+    tags: ["omega-3"],
+    weeks: [4],
+  },
+);
+
+// Derive backlinks from published lessons so the library cannot drift from citations.
+for (const [weekNumber, lesson] of Object.entries(lessons)) {
+  for (const id of lesson.sourceIds) {
+    const resource = resources.find((resource) => resource.id === id);
+    if (resource && !resource.weeks.includes(Number(weekNumber))) {
+      resource.weeks.push(Number(weekNumber));
+      resource.weeks.sort((a, b) => a - b);
+    }
+  }
+}
+for (const [weekNumber, videos] of Object.entries(videosByWeek)) {
+  for (const video of videos) {
+    if (!video.youtubeId || !video.title) continue;
+    resources.push({
+      id: "video-" + weekNumber + "-" + video.youtubeId,
+      title: video.title,
+      titleEn: video.titleEn ?? video.title,
+      source: "YouTube",
+      description: video.channel + " · " + (video.description ?? ""),
+      descriptionEn: video.channel + " · " + (video.descriptionEn ?? ""),
+      type: "video",
+      url: "https://www.youtube.com/watch?v=" + video.youtubeId,
+      tags: [
+        video.channel ?? "",
+        ...(lessons[Number(weekNumber)]?.keyTerms
+          .slice(0, 3)
+          .flatMap((term) => [term.term.zh, term.term.en]) ?? []),
+      ],
+      weeks: [Number(weekNumber)],
+    });
+  }
+}
