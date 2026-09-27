@@ -386,5 +386,137 @@
     "note": "Playback advanced beyond one second after a user click",
     "playerText": "Translator: Badaruddin Saahe\nReviewer: Sarmoko Sarmoko\nHow does your immune system work? - Emma Bryce\nTED-Ed",
     "checkedAt": "2026-09-27T02:54:47.812Z"
+  },
+  {
+    "videoState": [
+      {
+        "paused": false,
+        "currentTime": 1.0241,
+        "readyState": 4,
+        "networkState": 2,
+        "error": null
+      }
+    ],
+    "failedRequests": [
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      }
+    ],
+    "week": 13,
+    "url": "https://www.youtube-nocookie.com/embed/lay0LGZRdpM",
+    "playing": true,
+    "note": "Playback advanced beyond one second after a user click",
+    "playerText": "Daripada penyedia penjagaan kesihatan UK\nSWFT: Mendukung anak usia sekolah di Coventry dalam menghadapi tantangan makan\nSouth Warwickshire University NHS Foundation Trust\nSouth Warwickshire University NHS Foundation Trust",
+    "checkedAt": "2026-09-27T03:07:50.571Z"
+  },
+  {
+    "videoState": [
+      {
+        "paused": false,
+        "currentTime": 1.015068,
+        "readyState": 4,
+        "networkState": 2,
+        "error": null
+      }
+    ],
+    "failedRequests": [
+      {
+        "url": "https://yt3.ggpht.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      }
+    ],
+    "week": 14,
+    "url": "https://www.youtube-nocookie.com/embed/ATlf99m0Hfs",
+    "playing": true,
+    "note": "Playback advanced beyond one second after a user click",
+    "playerText": "Nutrition for Teenagers\nPublic Health Dietitians - Eating Well\nPublic Health Dietitians - Eating Well\n2.07K pelanggan",
+    "checkedAt": "2026-09-27T03:07:53.473Z"
+  },
+  {
+    "videoState": [
+      {
+        "paused": false,
+        "currentTime": 1.017146,
+        "readyState": 4,
+        "networkState": 2,
+        "error": null
+      }
+    ],
+    "failedRequests": [
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      }
+    ],
+    "week": 15,
+    "url": "https://www.youtube-nocookie.com/embed/gb2iEZgf63A",
+    "playing": true,
+    "note": "Playback advanced beyond one second after a user click",
+    "playerText": "Eatwell Guide | Updated | Healthy eating | UK Guidelines\nPublic Health Dietitians - Eating Well\nPublic Health Dietitians - Eating Well\n2.07K pelanggan",
+    "checkedAt": "2026-09-27T03:08:06.843Z"
+  },
+  {
+    "videoState": [
+      {
+        "paused": false,
+        "currentTime": 1.020937,
+        "readyState": 4,
+        "networkState": 2,
+        "error": null
+      }
+    ],
+    "failedRequests": [
+      {
+        "url": "https://i.ytimg.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      }
+    ],
+    "week": 16,
+    "url": "https://www.youtube-nocookie.com/embed/YN5sC-8V20I",
+    "playing": true,
+    "note": "Playback advanced beyond one second after a user click",
+    "playerText": "Menopause: Weight gain, nutrition and lifestyle - a British Menopause Society video\nBritish Menopause Society\nBritish Menopause Society\n3.26K pelanggan",
+    "checkedAt": "2026-09-27T03:08:10.611Z"
   }
 ]

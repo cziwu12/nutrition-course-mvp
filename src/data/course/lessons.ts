@@ -1,3 +1,7 @@
+import { week16Lesson } from "./weeks/week16";
+import { week15Lesson } from "./weeks/week15";
+import { week14Lesson } from "./weeks/week14";
+import { week13Lesson } from "./weeks/week13";
 import { week12Lesson } from "./weeks/week12";
 import { week11Lesson } from "./weeks/week11";
 import { week10Lesson } from "./weeks/week10";
@@ -12,6 +16,10 @@ import { week06Lesson } from "./weeks/week06";
 import { week07Lesson } from "./weeks/week07";
 import { week08Lesson } from "./weeks/week08";
 export const lessons: Record<number, Lesson> = {
+  16: week16Lesson,
+  15: week15Lesson,
+  14: week14Lesson,
+  13: week13Lesson,
   12: week12Lesson,
   11: week11Lesson,
   10: week10Lesson,

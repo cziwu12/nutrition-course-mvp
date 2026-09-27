@@ -245,5 +245,31 @@
     "durationSeconds": 763,
     "embeddable": true,
     "playability": "OK"
+  },
+  {
+    "id": "l6CEfgX7p2M",
+    "url": "https://www.youtube.com/watch?v=l6CEfgX7p2M",
+    "title": "Understanding Food Labels",
+    "channel": "Public Health Dietitians - Eating Well",
+    "channelUrl": "https://www.youtube.com/@publichealthdietitiansNI",
+    "oembed": true,
+    "embedHtml": "<iframe width=\"200\" height=\"113\" src=\"https://www.youtube.com/embed/l6CEfgX7p2M?feature=oembed\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen title=\"Understanding Food Labels\"></iframe>",
+    "checkedAt": "2026-09-27T03:08:38.847Z",
+    "durationSeconds": 116,
+    "embeddable": true,
+    "playability": "OK"
+  },
+  {
+    "id": "2rzykHTwEu4",
+    "url": "https://www.youtube.com/watch?v=2rzykHTwEu4",
+    "title": "Suku Suku Separuh",
+    "channel": "NutritionistKKM",
+    "channelUrl": "https://www.youtube.com/@BahagianPemakananKKM",
+    "oembed": true,
+    "embedHtml": "<iframe width=\"200\" height=\"113\" src=\"https://www.youtube.com/embed/2rzykHTwEu4?feature=oembed\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen title=\"Suku Suku Separuh\"></iframe>",
+    "checkedAt": "2026-09-27T03:08:39.474Z",
+    "durationSeconds": 76,
+    "embeddable": true,
+    "playability": "OK"
   }
 ]

@@ -168,3 +168,60 @@ Object.assign(videosByWeek, {
     },
   ],
 });
+
+Object.assign(videosByWeek, {
+  "13": [
+    {
+      title:
+        "SWFT: Supporting challenges in eating in school aged children Coventry",
+      channel: "South Warwickshire University NHS Foundation Trust",
+      youtubeId: "lay0LGZRdpM",
+      afterSection: "child-selectivity",
+      description:
+        "为什么看：医院团队解释学龄儿童的进食困难与家庭支持，约 19 分钟。涉及英国服务的部分请以本地求助渠道为准；个别喂养问题仍需评估。",
+      descriptionEn:
+        "Why watch: a hospital team explains eating challenges and family support for school-age children, in about 19 minutes. UK service details do not replace local support or individual feeding assessment.",
+      verifiedAt: "2026-09-27",
+    },
+  ],
+  "14": [
+    {
+      title: "Nutrition for Teenagers",
+      channel: "Public Health Dietitians - Eating Well",
+      youtubeId: "ATlf99m0Hfs",
+      afterSection: "teen-routine",
+      description:
+        "为什么看：公共健康营养师把青少年的营养与家庭日常联系起来。本片约 31 分钟，比其他视频长，可分两次看；选择它是因为内容直接针对青少年，而不是成人节食。",
+      descriptionEn:
+        "Why watch: public-health dietitians connect adolescent nutrition with family routines. At about 31 minutes this is longer than the other videos; split it into two sittings. Its direct focus on teenagers warrants the longer format.",
+      verifiedAt: "2026-09-27",
+    },
+  ],
+  "15": [
+    {
+      title: "Eatwell Guide | Updated | Healthy eating | UK Guidelines",
+      channel: "Public Health Dietitians - Eating Well",
+      youtubeId: "gb2iEZgf63A",
+      afterSection: "adult-pattern",
+      description:
+        "为什么看：营养师用英国 Eatwell 框架解释整日与整周平衡。把原则用于本地食物，不把英国份量或标签惯例当成马来西亚法规。",
+      descriptionEn:
+        "Why watch: dietitians explain balance across days and weeks using the UK Eatwell framework. Apply the principles to local foods; UK portions and label conventions are not Malaysian regulations.",
+      verifiedAt: "2026-09-27",
+    },
+  ],
+  "16": [
+    {
+      title:
+        "Menopause: Weight gain, nutrition and lifestyle - a British Menopause Society video",
+      channel: "British Menopause Society",
+      youtubeId: "YN5sC-8V20I",
+      afterSection: "women-pattern",
+      description:
+        "为什么看：英国更年期学会的营养师讨论营养、活动与生活方式。重点看可持续的安排；体重相关内容不代表每位学习者都需要减重。",
+      descriptionEn:
+        "Why watch: a dietitian for the British Menopause Society discusses nutrition, activity and lifestyle. Focus on sustainable routines; discussion of weight does not mean every learner needs weight loss.",
+      verifiedAt: "2026-09-27",
+    },
+  ],
+});
