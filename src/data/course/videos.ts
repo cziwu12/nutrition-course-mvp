@@ -256,3 +256,35 @@ Object.assign(videosByWeek, {
 });
 videosByWeek[17] = [];
 videosByWeek[19] = [];
+
+Object.assign(videosByWeek, {
+  "21": [
+    {
+      title:
+        "Can you spot the problem with these headlines? (Level 1) - Jeff Leek & Lucy McGowan",
+      channel: "TED-Ed",
+      youtubeId: "w1CeRpfByG8",
+      afterSection: "research-observation",
+      description:
+        "为什么看：练习辨认新闻标题与研究结果之间的差距，区分相关性和因果性。",
+      descriptionEn:
+        "Why watch: identify gaps between headlines and study findings, and distinguish association from causation.",
+      verifiedAt: "2026-09-27",
+    },
+  ],
+  "22": [
+    {
+      title: "How to spot a fad diet - Mia Nacamulli",
+      channel: "TED-Ed",
+      youtubeId: "8V15Z-yyiVg",
+      afterSection: "myth-miracle",
+      description:
+        "为什么看：识别流行饮食承诺中的警号，练习评估证据；这不是减重方案。",
+      descriptionEn:
+        "Why watch: recognise warning signs in fad-diet promises and evaluate evidence. This is not a weight-loss programme.",
+      verifiedAt: "2026-09-27",
+    },
+  ],
+  "23": [],
+  "24": [],
+});

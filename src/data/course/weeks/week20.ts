@@ -3,7 +3,6 @@ import {
   p,
   example,
   call,
-  compare,
   section,
   term,
   q,

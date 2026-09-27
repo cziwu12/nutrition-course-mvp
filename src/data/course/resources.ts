@@ -1,3 +1,4 @@
+import { evidenceResources } from "./evidence-resources";
 import { practicalResources } from "./practical-resources";
 import { lifeStageResources } from "./life-stage-resources";
 import { healthResources } from "./health-resources";
@@ -7,6 +8,7 @@ import type { Resource } from "./types";
 import { micronutrientResources } from "./micronutrient-resources";
 export const resources: Resource[] = [
   ...micronutrientResources,
+  ...evidenceResources,
   {
     id: "who",
     titleEn: "Healthy diet",
@@ -23,6 +25,9 @@ export const resources: Resource[] = [
   },
   {
     id: "nih",
+    titleEn: "Vitamin and mineral fact sheets",
+    descriptionEn:
+      "Consumer references on nutrients, intended populations, upper limits and medication interactions.",
     title: "维生素与矿物质资料库",
     source: "NIH Office of Dietary Supplements",
     description:
@@ -34,6 +39,9 @@ export const resources: Resource[] = [
   },
   {
     id: "plate",
+    titleEn: "Healthy Eating Plate",
+    descriptionEn:
+      "A plate framework adapted to family habits and available ingredients.",
     title: "健康餐盘 · Healthy Eating Plate",
     source: "Harvard Nutrition Source",
     description: "用餐盘框架思考一餐的食物搭配，再结合家庭习惯和可获得的食材。",
@@ -41,24 +49,6 @@ export const resources: Resource[] = [
     type: "article",
     tags: ["家庭菜单", "whole grains", "饮食分析"],
     weeks: [17, 19, 20, 24],
-  },
-  {
-    id: "kkm",
-    title: "马来西亚本地营养指南",
-    source: "KKM / Ministry of Health Malaysia",
-    description: "Resource to be added · 本地官方指南链接待核验。",
-    type: "official guide",
-    tags: ["马来西亚"],
-    weeks: [19, 20],
-  },
-  {
-    id: "evidence",
-    title: "科学研究与证据评估资源",
-    source: "Other trusted sources",
-    description: "Resource to be added · 专题阅读待核验。",
-    type: "article",
-    tags: ["科学研究", "营养误区"],
-    weeks: [12, 21, 22],
   },
 ];
 
