@@ -210,7 +210,13 @@ export function QuickChecks({
     </section>
   );
 }
-export function LessonContents({ lesson }: { lesson: Lesson }) {
+export function LessonContents({
+  lesson,
+  videoId,
+}: {
+  lesson: Lesson;
+  videoId?: string;
+}) {
   const { language, t } = useLanguage();
   return (
     <nav className="lesson-contents" aria-label={t("本课目录", "On this page")}>
@@ -223,7 +229,9 @@ export function LessonContents({ lesson }: { lesson: Lesson }) {
       ))}
       <hr />
       <a href="#key-terms">{t("关键术语", "Key terms")}</a>
-      <a href="#lesson-videos">{t("视频 · 选修", "Videos · optional")}</a>
+      <a href={videoId ? `#video-${videoId}` : "#lesson-videos"}>
+        {t("视频 · 选修", "Videos · optional")}
+      </a>
       <a href="#quick-checks">{t("快速自测", "Quick checks")}</a>
       <a href="#lesson-practice">{t("实践任务", "Practical task")}</a>
       <a href="#lesson-summary">{t("本周总结", "Week summary")}</a>

@@ -136,9 +136,22 @@ test("all routes, mobile overflow, resources and invalid weeks", async ({
   await page.getByRole("button", { name: "清除筛选" }).click();
   await page.getByLabel("按来源筛选").selectOption("YouTube");
   await expect(
-    page.getByRole("heading", { name: "课程视频待补充" }),
+    page.getByRole("heading", {
+      name: "What is a calorie? - Emma Bryce",
+      exact: true,
+    }),
   ).toBeVisible();
-  expect(await page.locator(".resource-card a").count()).toBe(0);
+  await expect(page.locator(".resource-card")).toHaveCount(8);
+  await expect(
+    page.locator('.resource-card a[href^="https://www.youtube.com/watch"]'),
+  ).toHaveCount(8);
+  await page.getByLabel("搜索主题或关键词").fill("protein");
+  await expect(
+    page.getByRole("heading", {
+      name: "Introduction to proteins and amino acids | High school biology | Khan Academy",
+      exact: true,
+    }),
+  ).toBeVisible();
   await page.goto("/course/week/25");
   await expect(
     page.getByRole("heading", { name: "没有找到这一课" }),

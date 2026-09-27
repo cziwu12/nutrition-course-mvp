@@ -1,0 +1,266 @@
+[
+  {
+    "videoState": [
+      {
+        "paused": false,
+        "currentTime": 1.015451,
+        "readyState": 4,
+        "networkState": 2,
+        "error": null
+      }
+    ],
+    "failedRequests": [
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      }
+    ],
+    "week": 1,
+    "url": "https://www.youtube-nocookie.com/embed/VEQaH4LruUo",
+    "playing": true,
+    "note": "Playback advanced beyond one second after a user click",
+    "playerText": "Translator: Made Pramana\nReviewer: Edelweis Dwi Kusuma Dewi\nWhat is a calorie? - Emma Bryce\nTED-Ed",
+    "checkedAt": "2026-09-26T18:46:25.470Z"
+  },
+  {
+    "videoState": [
+      {
+        "paused": false,
+        "currentTime": 1.014376,
+        "readyState": 4,
+        "networkState": 2,
+        "error": null
+      }
+    ],
+    "failedRequests": [
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      }
+    ],
+    "week": 2,
+    "url": "https://www.youtube-nocookie.com/embed/6o4WL5jlpn0",
+    "playing": true,
+    "note": "Playback advanced beyond one second after a user click",
+    "playerText": "Bu videoda karbohidratlara\nqısa bir\nPengantar karbohidrat | Biologi SMA | Khan Academy\nKhan Academy",
+    "checkedAt": "2026-09-26T18:46:38.381Z"
+  },
+  {
+    "videoState": [
+      {
+        "paused": false,
+        "currentTime": 1.009938,
+        "readyState": 4,
+        "networkState": 2,
+        "error": null
+      }
+    ],
+    "failedRequests": [
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      }
+    ],
+    "week": 3,
+    "url": "https://www.youtube-nocookie.com/embed/78QUeXVKiJ4",
+    "playing": true,
+    "note": "Playback advanced beyond one second after a user click",
+    "playerText": "Bu videoda zülallar\nhaqqında danışacağıq.\nPengantar protein dan asam amino | Biologi SMA | Khan Academy\nKhan Academy",
+    "checkedAt": "2026-09-26T18:46:50.947Z"
+  },
+  {
+    "videoState": [
+      {
+        "paused": false,
+        "currentTime": 1.012287,
+        "readyState": 4,
+        "networkState": 2,
+        "error": null
+      }
+    ],
+    "failedRequests": [
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      }
+    ],
+    "week": 4,
+    "url": "https://www.youtube-nocookie.com/embed/QhUrc4BnPgg",
+    "playing": true,
+    "note": "Playback advanced beyond one second after a user click",
+    "playerText": "Translator: Wieka Barathayomi\nReviewer: Made Pramana\nWhat is fat? - George Zaidan\nTED-Ed",
+    "checkedAt": "2026-09-26T18:47:03.647Z"
+  },
+  {
+    "videoState": [
+      {
+        "paused": false,
+        "currentTime": 1.022122,
+        "readyState": 4,
+        "networkState": 2,
+        "error": null
+      }
+    ],
+    "failedRequests": [
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      }
+    ],
+    "week": 5,
+    "url": "https://www.youtube-nocookie.com/embed/ISZLTJH5lYg",
+    "playing": true,
+    "note": "Playback advanced beyond one second after a user click",
+    "playerText": "المترجم: Sabah Kabashor\nالمدقّق: Muhammad Samir\nHow do vitamins work? - Ginnie Trinh Nguyen\nTED-Ed",
+    "checkedAt": "2026-09-26T18:47:16.345Z"
+  },
+  {
+    "videoState": [
+      {
+        "paused": false,
+        "currentTime": 1.011631,
+        "readyState": 4,
+        "networkState": 2,
+        "error": null
+      }
+    ],
+    "failedRequests": [
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      }
+    ],
+    "week": 6,
+    "url": "https://www.youtube-nocookie.com/embed/1Zh045t0xcE",
+    "playing": true,
+    "note": "Playback advanced beyond one second after a user click",
+    "playerText": "Translator: Bias Ayu\nReviewer: Maria Nainggolan\nKamu mungkin percaya bahwa susu,\nWhy Healthy Bones Are About So Much More than Milk | Body Stuff with Dr. Jen Gunter",
+    "checkedAt": "2026-09-26T18:47:29.147Z"
+  },
+  {
+    "videoState": [
+      {
+        "paused": false,
+        "currentTime": 1.01536,
+        "readyState": 4,
+        "networkState": 2,
+        "error": null
+      }
+    ],
+    "failedRequests": [
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      }
+    ],
+    "week": 7,
+    "url": "https://www.youtube-nocookie.com/embed/Og5xAdC8EUI",
+    "playing": true,
+    "note": "Playback advanced beyond one second after a user click",
+    "playerText": "Translator: Rifkul Uswati\nReviewer: Sarmoko Sarmoko\nHow your digestive system works - Emma Bryce\nTED-Ed",
+    "checkedAt": "2026-09-26T18:47:41.980Z"
+  },
+  {
+    "videoState": [
+      {
+        "paused": false,
+        "currentTime": 1.019042,
+        "readyState": 4,
+        "networkState": 2,
+        "error": null
+      }
+    ],
+    "failedRequests": [
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      }
+    ],
+    "week": 8,
+    "url": "https://www.youtube-nocookie.com/embed/1sISguPDlhY",
+    "playing": true,
+    "note": "Playback advanced beyond one second after a user click",
+    "playerText": "Translator: Made Pramana\nReviewer: Sarmoko Sarmoko\nHow the food you eat affects your gut - Shilpa Ravella\nTED-Ed",
+    "checkedAt": "2026-09-26T18:47:54.946Z"
+  }
+]

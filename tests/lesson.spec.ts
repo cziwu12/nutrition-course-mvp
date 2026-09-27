@@ -7,6 +7,15 @@ import {
 } from "../src/lib/progress-store";
 import { youtubeEmbed } from "../src/components/course";
 
+test.beforeEach(async ({ page }) => {
+  await page.route("https://www.youtube-nocookie.com/**", (route) =>
+    route.fulfill({
+      contentType: "text/html",
+      body: "<html><body>External player isolated in app regression tests</body></html>",
+    }),
+  );
+});
+
 test("authored lessons have complete bilingual content, terms and references", () => {
   const lesson = weeks[0].lesson;
   if (lesson.status !== "published") throw new Error("Week 1 missing");
@@ -31,7 +40,7 @@ test("authored lessons have complete bilingual content, terms and references", (
     expect(week.checklist.find((c) => c.id === "resources")?.required).toBe(
       false,
     );
-    if (week.week > 1) expect(week.lesson.status).toBe("developing");
+    if (week.week > 8) expect(week.lesson.status).toBe("developing");
   }
   const old = {
     version: 1,
@@ -180,23 +189,20 @@ test("Week 1 language, recall, anchors and legacy progress work together", async
     "外部阅读均为选修",
   );
   await expect(page.locator("#lesson-videos iframe")).toHaveCount(0);
-  await expect(page.locator(".video-placeholder")).toBeVisible();
+  await expect(page.locator("#energy iframe")).toHaveAttribute(
+    "src",
+    "https://www.youtube-nocookie.com/embed/VEQaH4LruUo",
+  );
+  await expect(page.locator(".video-placeholder")).toHaveCount(0);
   expect(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= innerWidth,
     ),
   ).toBe(true);
   await page.goto("/course/week/2");
-  await expect(
-    page.getByRole("heading", { name: "完整讲义正在编写", exact: true }),
-  ).toBeVisible();
+  await expect(page.locator("#carbohydrate-family h2")).toBeVisible();
   await page.getByRole("button", { name: "English", exact: true }).click();
-  await expect(
-    page.getByRole("heading", {
-      name: "The full lesson is being developed",
-      exact: true,
-    }),
-  ).toBeVisible();
+  await expect(page.locator("#carbohydrate-family")).toContainText("glucose");
   await expect(page.locator(".practical")).toContainText("rice noodles");
   await page.goto("/course/week/1");
   await expect(

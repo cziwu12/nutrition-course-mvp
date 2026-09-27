@@ -13,45 +13,66 @@ try {
     const iframe = page.locator(".video-card iframe");
     await iframe.scrollIntoViewIfNeeded();
     const frame = await (await iframe.elementHandle()).contentFrame();
-    const failedRequests=[];
-    const onFailure=request=>{ if (!request.url().startsWith('http://127.0.0.1')) failedRequests.push({url:new URL(request.url()).origin,error:request.failure()?.errorText}); };
-    page.on('requestfailed',onFailure);
+    const failedRequests = [];
+    const onFailure = (request) => {
+      if (!request.url().startsWith("http://127.0.0.1"))
+        failedRequests.push({
+          url: new URL(request.url()).origin,
+          error: request.failure()?.errorText,
+        });
+    };
+    page.on("requestfailed", onFailure);
     let note = "";
-    try {
-      await frame
-        .locator(".ytp-large-play-button, .ytmCuedOverlayPlayButton")
-        .first()
-        .click({ timeout: 12000 });
-    } catch {
-      note = "Play control not available within 12 seconds";
-    }
     let playing = false;
-    try {
-      await frame.waitForFunction(
-        () => {
-          const v = document.querySelector("video");
-          return v && !v.paused && v.currentTime > 0;
-        },
-        {},
-        { timeout: 6000 },
-      );
-      playing = true;
-    } catch {
-      /* Report the observed failure; never claim playback without evidence. */
+    let attempts = 0;
+    // Embedded controls can appear before their event handlers are ready.
+    // Retry one ordinary user click; never force a player into a successful state.
+    for (attempts = 1; attempts <= 2 && !playing; attempts++) {
+      try {
+        await frame
+          .locator(".ytp-large-play-button, .ytmCuedOverlayPlayButton")
+          .first()
+          .click({ timeout: 12000 });
+        await frame.waitForFunction(
+          () => {
+            const video = document.querySelector("video");
+            return video && !video.paused && video.currentTime > 1;
+          },
+          {},
+          { timeout: 10000 },
+        );
+        playing = true;
+      } catch {
+        note = "Playback did not advance past one second on this attempt";
+      }
     }
+    if (playing)
+      note = "Playback advanced beyond one second after a user click";
     const text = await frame
       .locator("body")
       .innerText({ timeout: 3000 })
       .catch(() => "Frame text unavailable");
-    const videoState=await frame.locator('video').evaluateAll(videos=>videos.map(v=>({paused:v.paused,currentTime:v.currentTime,readyState:v.readyState,networkState:v.networkState,error:v.error?.message??null}))).catch(()=>[]);
-    page.off('requestfailed',onFailure);
+    const videoState = await frame
+      .locator("video")
+      .evaluateAll((videos) =>
+        videos.map((v) => ({
+          paused: v.paused,
+          currentTime: v.currentTime,
+          readyState: v.readyState,
+          networkState: v.networkState,
+          error: v.error?.message ?? null,
+        })),
+      )
+      .catch(() => []);
+    page.off("requestfailed", onFailure);
     records.push({
-      videoState,failedRequests,
+      videoState,
+      failedRequests,
       week: n,
       url: await iframe.getAttribute("src"),
       playing,
       note,
-      playerText: text.slice(0, 800),
+      playerText: text.split("\n").slice(0, 4).join("\n"),
       checkedAt: new Date().toISOString(),
     });
     console.log(JSON.stringify(records.at(-1)));

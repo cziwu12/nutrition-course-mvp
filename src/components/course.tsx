@@ -212,7 +212,10 @@ export function VideoCard({ video }: { video: Video }) {
       ? "https://www.youtube-nocookie.com/embed/" + video.youtubeId
       : youtubeEmbed(video.url);
   return embed ? (
-    <article className="video-card">
+    <article
+      className="video-card"
+      id={video.youtubeId ? `video-${video.youtubeId}` : undefined}
+    >
       <iframe
         src={embed}
         title={t(

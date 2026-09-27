@@ -79,7 +79,10 @@ export function WeekDetail({ week }: { week: Week }) {
       <div className={`study-layout ${lesson ? "" : "developing-layout"}`}>
         {lesson && (
           <aside className="study-sidebar">
-            <LessonContents lesson={lesson} />
+            <LessonContents
+              lesson={lesson}
+              videoId={week.videos.find((video) => video.youtubeId)?.youtubeId}
+            />
             <div className="reading-progress">
               <div className="progress-label">
                 <span>{t("本周进度", "This week")}</span>
