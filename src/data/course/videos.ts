@@ -225,3 +225,34 @@ Object.assign(videosByWeek, {
     },
   ],
 });
+
+Object.assign(videosByWeek, {
+  "18": [
+    {
+      title: "Understanding Food Labels",
+      channel: "Public Health Dietitians - Eating Well",
+      youtubeId: "l6CEfgX7p2M",
+      afterSection: "label-basis",
+      description:
+        "为什么看：营养师示范从标签中寻找信息。视频采用英国包装例子；颜色标识不是马来西亚法规，本课以 KKM 资料补充本地背景。",
+      descriptionEn:
+        "Why watch: a dietitian demonstrates finding label information. This uses UK packaging; colour coding is not Malaysian law. The lesson adds local context from KKM.",
+      verifiedAt: "2026-09-27",
+    },
+  ],
+  "20": [
+    {
+      title: "Suku Suku Separuh",
+      channel: "NutritionistKKM",
+      youtubeId: "2rzykHTwEu4",
+      afterSection: "menu-framework",
+      description:
+        "为什么看：KKM 的马来语短片用本地食物展示 Suku Suku Separuh。它是简短视觉提示，详细推理与替代方法仍在本课中英正文。",
+      descriptionEn:
+        "Why watch: this brief Malay-language KKM video illustrates Suku Suku Separuh with local foods. It is a visual prompt; the bilingual written lesson supplies detailed reasoning and alternatives.",
+      verifiedAt: "2026-09-27",
+    },
+  ],
+});
+videosByWeek[17] = [];
+videosByWeek[19] = [];

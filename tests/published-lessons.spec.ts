@@ -6,7 +6,7 @@ import { parseProgress, STORAGE_KEY } from "../src/lib/progress-store";
 test("published lesson graph and verified video metadata are consistent", () => {
   const published = weeks.filter((w) => w.lesson.status === "published");
   expect(published.map((w) => w.week)).toEqual(
-    Array.from({ length: 16 }, (_, i) => i + 1),
+    Array.from({ length: 20 }, (_, i) => i + 1),
   );
   expect(new Set(resources.map((r) => r.id)).size).toBe(resources.length);
   for (const week of published) {
@@ -54,6 +54,8 @@ test("published lesson graph and verified video metadata are consistent", () => 
         );
       }
     }
+    if (!week.videos.length)
+      expect(lesson.videoNote?.en.length).toBeGreaterThan(30);
     for (const video of week.videos) {
       const evidence = verification.find((v) => v.id === video.youtubeId);
       expect(evidence, `Week ${week.week}: evidence exists`).toBeDefined();
@@ -77,7 +79,7 @@ test("new lesson recall persists across languages, notes edits, reloads and revi
   );
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
-  for (const n of Array.from({ length: 15 }, (_, i) => i + 2)) {
+  for (const n of Array.from({ length: 19 }, (_, i) => i + 2)) {
     const week = weeks[n - 1];
     const lesson = week.lesson;
     if (lesson.status !== "published") throw new Error(`Week ${n} missing`);
@@ -90,26 +92,35 @@ test("new lesson recall persists across languages, notes edits, reloads and revi
       }),
     ).toBeVisible();
     const video = week.videos[0];
-    await page
-      .getByRole("navigation", { name: "On this page" })
-      .getByRole("link", { name: "Videos · optional", exact: true })
-      .click();
-    await expect(page).toHaveURL(new RegExp("#video-" + video.youtubeId + "$"));
-    const player = page.locator(`#${video.afterSection} iframe`);
-    await player.scrollIntoViewIfNeeded();
-    await expect(player).toHaveAttribute(
-      "src",
-      `https://www.youtube-nocookie.com/embed/${video.youtubeId}`,
-    );
-    await expect(player).toHaveAttribute("title", video.title!);
-    await expect(
-      page.locator(
-        `a[href="https://www.youtube.com/watch?v=${video.youtubeId}"]`,
-      ),
-    ).toBeVisible();
-    const rect = await player.boundingBox();
-    expect(rect?.width).toBeGreaterThan(200);
-    expect(Math.abs(rect!.width / rect!.height - 16 / 9)).toBeLessThan(0.05);
+    if (video) {
+      await page
+        .getByRole("navigation", { name: "On this page" })
+        .getByRole("link", { name: "Videos · optional", exact: true })
+        .click();
+      await expect(page).toHaveURL(
+        new RegExp("#video-" + video.youtubeId + "$"),
+      );
+      const player = page.locator(`#${video.afterSection} iframe`);
+      await player.scrollIntoViewIfNeeded();
+      await expect(player).toHaveAttribute(
+        "src",
+        `https://www.youtube-nocookie.com/embed/${video.youtubeId}`,
+      );
+      await expect(player).toHaveAttribute("title", video.title!);
+      await expect(
+        page.locator(
+          `a[href="https://www.youtube.com/watch?v=${video.youtubeId}"]`,
+        ),
+      ).toBeVisible();
+      const rect = await player.boundingBox();
+      expect(rect?.width).toBeGreaterThan(200);
+      expect(Math.abs(rect!.width / rect!.height - 16 / 9)).toBeLessThan(0.05);
+    } else {
+      await expect(page.locator("#lesson-videos")).toContainText(
+        lesson.videoNote!.en,
+      );
+      await expect(page.locator(".video-card iframe")).toHaveCount(0);
+    }
     const question = lesson.questions[0];
     const group = page.getByRole("group", {
       name: question.prompt.en,
@@ -151,7 +162,7 @@ test("new lesson recall persists across languages, notes edits, reloads and revi
   const stored = parseProgress(
     await page.evaluate((key) => localStorage.getItem(key), STORAGE_KEY),
   );
-  for (let n = 2; n <= 16; n++) {
+  for (let n = 2; n <= 20; n++) {
     expect(stored.weeks[n].notes).toContain(`第${n}周笔记`);
     expect(stored.weeks[n].checks.topics).toBe(true);
     expect(Object.keys(stored.weeks[n].answers ?? {})).toHaveLength(1);

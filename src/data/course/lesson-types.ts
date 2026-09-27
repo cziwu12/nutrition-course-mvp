@@ -43,5 +43,6 @@ export type Lesson = {
   summary: Localized<string[]>;
   sourceIds: string[];
   reviewedAt: string;
+  videoNote?: Localized;
 };
 export type LessonState = Lesson | { status: "developing" };

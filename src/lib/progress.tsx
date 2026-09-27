@@ -116,6 +116,19 @@ function useProgressState() {
         },
       },
     }));
+  const writeWorksheet = (week: number, id: string, value: string) =>
+    update((p) => ({
+      ...p,
+      weeks: {
+        ...p.weeks,
+        [week]: {
+          ...p.weeks[week],
+          notes: p.weeks[week]?.notes ?? "",
+          checks: p.weeks[week]?.checks ?? {},
+          worksheet: { ...p.weeks[week]?.worksheet, [id]: value },
+        },
+      },
+    }));
   const reset = () => {
     try {
       browserStorage.reset();
@@ -136,6 +149,7 @@ function useProgressState() {
     error,
     visit,
     answer,
+    writeWorksheet,
     check,
     note,
     reset,

@@ -38,7 +38,7 @@ export const weeks: Week[] = seeds.map(
       practicalTask,
       reflection,
       resourceIds: lessons[i + 1]?.sourceIds ?? resourceIds,
-      videos: videosByWeek[i + 1]?.length ? videosByWeek[i + 1] : [{}],
+      videos: videosByWeek[i + 1] ?? [{}],
       checklist: [
         { id: "topics", label: "阅读本周主题", required: true },
         { id: "resources", label: "查看推荐资源", required: false },

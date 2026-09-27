@@ -1,3 +1,4 @@
+import { practicalResources } from "./practical-resources";
 import { lifeStageResources } from "./life-stage-resources";
 import { healthResources } from "./health-resources";
 import { lessons } from "./lessons";
@@ -217,7 +218,11 @@ resources.push(
   },
 );
 
-resources.push(...healthResources, ...lifeStageResources);
+resources.push(
+  ...healthResources,
+  ...lifeStageResources,
+  ...practicalResources,
+);
 
 // Derive backlinks from published lessons so the library cannot drift from citations.
 for (const [weekNumber, lesson] of Object.entries(lessons)) {

@@ -518,5 +518,67 @@
     "note": "Playback advanced beyond one second after a user click",
     "playerText": "Menopause: Weight gain, nutrition and lifestyle - a British Menopause Society video\nBritish Menopause Society\nBritish Menopause Society\n3.26K pelanggan",
     "checkedAt": "2026-09-27T03:08:10.611Z"
+  },
+  {
+    "videoState": [
+      {
+        "paused": false,
+        "currentTime": 1.01662,
+        "readyState": 4,
+        "networkState": 2,
+        "error": null
+      }
+    ],
+    "failedRequests": [
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      }
+    ],
+    "week": 18,
+    "url": "https://www.youtube-nocookie.com/embed/l6CEfgX7p2M",
+    "playing": true,
+    "note": "Playback advanced beyond one second after a user click",
+    "playerText": "Understanding Food Labels\nPublic Health Dietitians - Eating Well\nPublic Health Dietitians - Eating Well\n2.07K pelanggan",
+    "checkedAt": "2026-09-27T03:24:06.250Z"
+  },
+  {
+    "videoState": [
+      {
+        "paused": false,
+        "currentTime": 1.018562,
+        "readyState": 4,
+        "networkState": 2,
+        "error": null
+      }
+    ],
+    "failedRequests": [
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      }
+    ],
+    "week": 20,
+    "url": "https://www.youtube-nocookie.com/embed/2rzykHTwEu4",
+    "playing": true,
+    "note": "Playback advanced beyond one second after a user click",
+    "playerText": "Suku Suku Separuh\nNutritionistKKM\nNutritionistKKM\n14.4K pelanggan",
+    "checkedAt": "2026-09-27T03:24:09.162Z"
   }
 ]

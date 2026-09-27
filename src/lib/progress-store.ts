@@ -1,8 +1,10 @@
+import { worksheets } from "../data/course/worksheets";
 import { weeks } from "../data/course";
 export type WeekProgress = {
   checks: Record<string, boolean>;
   notes: string;
   answers?: Record<string, string>;
+  worksheet?: Record<string, string>;
 };
 export type Progress = {
   version: 1;
@@ -38,6 +40,11 @@ export function parseProgress(raw: string | null): Progress {
     const saved = input.weeks[week.week];
     if (!saved || typeof saved !== "object") continue;
     result.weeks[week.week] = {
+      worksheet: Object.fromEntries(
+        (worksheets[week.week]?.fields ?? [])
+          .filter((field) => typeof saved.worksheet?.[field.id] === "string")
+          .map((field) => [field.id, saved.worksheet[field.id]]),
+      ),
       answers: Object.fromEntries(
         (week.lesson.status === "published" ? week.lesson.questions : [])
           .filter((q) => q.options.some((o) => o.id === saved.answers?.[q.id]))

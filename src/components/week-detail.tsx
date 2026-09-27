@@ -1,4 +1,5 @@
 "use client";
+import { LessonWorksheet } from "./lesson-worksheet";
 import { diaryExample } from "@/data/course/activities";
 import Link from "next/link";
 import { useEffect } from "react";
@@ -170,6 +171,7 @@ export function WeekDetail({ week }: { week: Week }) {
           {lesson && <KeyTerms lesson={lesson} />}
           <section id="lesson-videos" className="reading-section">
             <h2>{t("视频辅助学习", "Watch and revisit")}</h2>
+            {lesson?.videoNote && <p>{lesson.videoNote[language]}</p>}
             {week.videos.some((v) => v.afterSection) && (
               <p>
                 {t(
@@ -187,6 +189,7 @@ export function WeekDetail({ week }: { week: Week }) {
           {lesson && <QuickChecks lesson={lesson} week={week.week} />}
           <section id="lesson-practice" className="reading-section">
             <PracticalTaskCard week={week} />
+            <LessonWorksheet week={week.week} />
             {week.week === 17 && (
               <div className="diary-example">
                 <h3>{t("饮食日记示例", "Food diary example")}</h3>
