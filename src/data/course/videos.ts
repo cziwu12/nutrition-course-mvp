@@ -113,3 +113,58 @@ const reviewedVideos: Record<number, Video[]> = {
   ],
 };
 Object.assign(videosByWeek, reviewedVideos);
+
+Object.assign(videosByWeek, {
+  "9": [
+    {
+      title: "What is type 2 diabetes? [Spoken in English]",
+      channel: "Diabetes UK",
+      youtubeId: "o3v2fnCaSTg",
+      afterSection: "insulin-resistance",
+      description:
+        "为什么看：用简短动画复习胰岛素阻抗与 2 型糖尿病的联系。个人诊断与治疗需由医疗团队评估。",
+      descriptionEn:
+        "Why watch: briefly revisit insulin resistance and type 2 diabetes. Individual diagnosis and treatment belong with a healthcare team.",
+      verifiedAt: "2026-09-27",
+    },
+  ],
+  "10": [
+    {
+      title: "Understanding Blood Pressure (Subtitles)",
+      channel: "British Heart Foundation",
+      youtubeId: "4YNdp3pRjig",
+      afterSection: "blood-pressure",
+      description:
+        "为什么看：观察血压两个读数表示什么。视频是概念说明，不能用来自行诊断。",
+      descriptionEn:
+        "Why watch: visualise what the two blood pressure readings mean. This explanation is not a self-diagnosis tool.",
+      verifiedAt: "2026-09-27",
+    },
+  ],
+  "11": [
+    {
+      title: "How does your body know you're full? - Hilary Coller",
+      channel: "TED-Ed",
+      youtubeId: "YVfyYrEmzgM",
+      afterSection: "appetite-satiety",
+      description:
+        "为什么看：把胃、肠道与大脑的饱腹信号连起来。个体感受有差异，不需要把视频变成限制进食的规则。",
+      descriptionEn:
+        "Why watch: connect stomach, gut and brain signals involved in fullness. Experiences vary; this is not a rule for restricting food.",
+      verifiedAt: "2026-09-27",
+    },
+  ],
+  "12": [
+    {
+      title: "How does your immune system work? - Emma Bryce",
+      channel: "TED-Ed",
+      youtubeId: "PSRJfaAYkW4",
+      afterSection: "inflammation",
+      description:
+        "为什么看：理解免疫防御的基本过程。它不证明任何食品或补充剂能够治疗慢性炎症。",
+      descriptionEn:
+        "Why watch: understand basic immune defence. This does not establish that a food or supplement treats chronic inflammation.",
+      verifiedAt: "2026-09-27",
+    },
+  ],
+});

@@ -6,7 +6,7 @@ try {
   const page = await browser.newPage({
     viewport: { width: 1365, height: 900 },
   });
-  for (let n = 1; n <= 8; n++) {
+  for (const n of (process.argv.length > 2 ? process.argv.slice(2).map(Number) : Array.from({ length: 12 }, (_, i) => i + 1))) {
     await page.goto(`http://127.0.0.1:3000/course/week/${n}`, {
       waitUntil: "domcontentloaded",
     });
@@ -87,7 +87,7 @@ try {
   await page.screenshot({ path: "test-results/digestion-mobile.png" });
   fs.writeFileSync(
     "docs/video-playback-check.json",
-    JSON.stringify(records, null, 2) + "\n",
+    JSON.stringify([...JSON.parse(fs.readFileSync("docs/video-playback-check.json", "utf8")).filter(old => !records.some(record => record.week === old.week)), ...records].sort((a,b) => a.week-b.week), null, 2) + "\n",
   );
 } finally {
   await browser.close();

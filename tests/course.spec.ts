@@ -141,10 +141,10 @@ test("all routes, mobile overflow, resources and invalid weeks", async ({
       exact: true,
     }),
   ).toBeVisible();
-  await expect(page.locator(".resource-card")).toHaveCount(8);
+  await expect(page.locator(".resource-card")).toHaveCount(12);
   await expect(
     page.locator('.resource-card a[href^="https://www.youtube.com/watch"]'),
-  ).toHaveCount(8);
+  ).toHaveCount(12);
   await page.getByLabel("搜索主题或关键词").fill("protein");
   await expect(
     page.getByRole("heading", {

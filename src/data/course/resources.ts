@@ -1,3 +1,4 @@
+import { healthResources } from "./health-resources";
 import { lessons } from "./lessons";
 import { videosByWeek } from "./videos";
 import type { Resource } from "./types";
@@ -214,6 +215,8 @@ resources.push(
     weeks: [4],
   },
 );
+
+resources.push(...healthResources);
 
 // Derive backlinks from published lessons so the library cannot drift from citations.
 for (const [weekNumber, lesson] of Object.entries(lessons)) {

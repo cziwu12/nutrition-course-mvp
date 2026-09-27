@@ -262,5 +262,129 @@
     "note": "Playback advanced beyond one second after a user click",
     "playerText": "Translator: Made Pramana\nReviewer: Sarmoko Sarmoko\nHow the food you eat affects your gut - Shilpa Ravella\nTED-Ed",
     "checkedAt": "2026-09-26T18:47:54.946Z"
+  },
+  {
+    "videoState": [
+      {
+        "paused": false,
+        "currentTime": 1.011806,
+        "readyState": 4,
+        "networkState": 2,
+        "error": null
+      }
+    ],
+    "failedRequests": [
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      }
+    ],
+    "week": 9,
+    "url": "https://www.youtube-nocookie.com/embed/o3v2fnCaSTg",
+    "playing": true,
+    "note": "Playback advanced beyond one second after a user click",
+    "playerText": "Daripada saluran dengan pakar kesihatan berlesen di UK\nWhat is type 2 diabetes? [Spoken in English]\nDiabetes UK\nDiabetes UK",
+    "checkedAt": "2026-09-27T02:54:19.025Z"
+  },
+  {
+    "videoState": [
+      {
+        "paused": false,
+        "currentTime": 1.009879,
+        "readyState": 4,
+        "networkState": 2,
+        "error": null
+      }
+    ],
+    "failedRequests": [
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      }
+    ],
+    "week": 10,
+    "url": "https://www.youtube-nocookie.com/embed/4YNdp3pRjig",
+    "playing": true,
+    "note": "Playback advanced beyond one second after a user click",
+    "playerText": "Daripada saluran dengan pakar kesihatan berlesen di UK\nUnderstanding Blood Pressure (Subtitles)\nBritish Heart Foundation\nBritish Heart Foundation",
+    "checkedAt": "2026-09-27T02:54:21.581Z"
+  },
+  {
+    "videoState": [
+      {
+        "paused": false,
+        "currentTime": 1.024739,
+        "readyState": 4,
+        "networkState": 2,
+        "error": null
+      }
+    ],
+    "failedRequests": [
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      }
+    ],
+    "week": 11,
+    "url": "https://www.youtube-nocookie.com/embed/YVfyYrEmzgM",
+    "playing": true,
+    "note": "Playback advanced beyond one second after a user click",
+    "playerText": "Translator: Edelweis Dwi Kusuma Dewi\nHow does your body know you're full? - Hilary Coller\nTED-Ed\nTED-Ed",
+    "checkedAt": "2026-09-27T02:54:34.583Z"
+  },
+  {
+    "videoState": [
+      {
+        "paused": false,
+        "currentTime": 1.011372,
+        "readyState": 4,
+        "networkState": 2,
+        "error": null
+      }
+    ],
+    "failedRequests": [
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      }
+    ],
+    "week": 12,
+    "url": "https://www.youtube-nocookie.com/embed/PSRJfaAYkW4",
+    "playing": true,
+    "note": "Playback advanced beyond one second after a user click",
+    "playerText": "Translator: Badaruddin Saahe\nReviewer: Sarmoko Sarmoko\nHow does your immune system work? - Emma Bryce\nTED-Ed",
+    "checkedAt": "2026-09-27T02:54:47.812Z"
   }
 ]
