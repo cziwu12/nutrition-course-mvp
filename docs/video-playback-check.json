@@ -580,5 +580,67 @@
     "note": "Playback advanced beyond one second after a user click",
     "playerText": "Suku Suku Separuh\nNutritionistKKM\nNutritionistKKM\n14.4K pelanggan",
     "checkedAt": "2026-09-27T03:24:09.162Z"
+  },
+  {
+    "videoState": [
+      {
+        "paused": false,
+        "currentTime": 1.027397,
+        "readyState": 4,
+        "networkState": 2,
+        "error": null
+      }
+    ],
+    "failedRequests": [
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      }
+    ],
+    "week": 21,
+    "url": "https://www.youtube-nocookie.com/embed/w1CeRpfByG8",
+    "playing": true,
+    "note": "Playback advanced beyond one second after a user click",
+    "playerText": "Translator: Cindy Pandie\nReviewer: Reno Kanti Riananda\nCan you spot the problem with these headlines? (Level 1) - Jeff Leek & Lucy McGowan\nTED-Ed",
+    "checkedAt": "2026-09-27T08:26:06.779Z"
+  },
+  {
+    "videoState": [
+      {
+        "paused": false,
+        "currentTime": 1.018657,
+        "readyState": 4,
+        "networkState": 2,
+        "error": null
+      }
+    ],
+    "failedRequests": [
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://www.youtube-nocookie.com",
+        "error": "net::ERR_ABORTED"
+      }
+    ],
+    "week": 22,
+    "url": "https://www.youtube-nocookie.com/embed/8V15Z-yyiVg",
+    "playing": true,
+    "note": "Playback advanced beyond one second after a user click",
+    "playerText": "المترجم: Alaa AHMAD\nالمدقّق: Hani Eldalees\nHow to spot a fad diet - Mia Nacamulli\nTED-Ed",
+    "checkedAt": "2026-09-27T08:26:09.672Z"
   }
 ]

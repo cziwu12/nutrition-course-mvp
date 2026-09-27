@@ -8,7 +8,9 @@ try {
   });
   for (const n of process.argv.length > 2
     ? process.argv.slice(2).map(Number)
-    : Array.from({ length: 12 }, (_, i) => i + 1)) {
+    : Array.from({ length: 24 }, (_, i) => i + 1).filter(
+        (n) => ![17, 19, 23, 24].includes(n),
+      )) {
     await page.goto(`http://127.0.0.1:3000/course/week/${n}`, {
       waitUntil: "domcontentloaded",
     });

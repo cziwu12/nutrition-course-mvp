@@ -2,7 +2,7 @@
 
 A bilingual family nutrition learning app in `cziwu12/nutrition-course-mvp`, built with Next.js App Router, React, TypeScript and Tailwind CSS. No authentication, backend, API keys or environment variables are required.
 
-**Weeks 1–8 now have full authored Chinese and English lessons:** six self-contained sections per week, defined terminology, four quick checks with feedback, practical activities, summaries and optional references. Week 1 remains the approved benchmark. Eight verified YouTube selections appear inline at relevant sections. Weeks 9–24 retain their curriculum and learning records and explicitly say detailed lessons are being developed. The full 24-week content expansion is not yet complete. See [the editorial report](docs/course-expansion-report.md).
+**All 24 weeks have complete Chinese and English lessons:** six teaching sections per week, defined terminology, four quick checks with feedback, practical activities, summaries and optional primary-source references. Week 1 remains the approved benchmark. Twenty verified YouTube selections appear inline; Weeks 17, 19, 23 and 24 intentionally focus on written practice. Saved worksheets cover food diaries, labels, daily and weekly menus, case analysis and the 13-section family guide, with text downloads. See [the editorial report](docs/course-expansion-report.md).
 
 ## Run
 
@@ -36,7 +36,7 @@ Build first: Playwright starts a production server automatically if one is not a
 - `src/data/course.ts`: compatibility export, preserving existing consumer imports.
 - `src/data/course/index.ts`: assembles week metadata, published lessons and checklists.
 - `src/data/course/curriculum.ts`: original 24-week curriculum metadata.
-- `src/data/course/weeks/week01.ts`–`week08.ts`: authored bilingual lessons, terms, questions, practical activities and summaries.
+- `src/data/course/weeks/week01.ts`–`week24.ts`: authored bilingual lessons, terms, questions, practical activities and summaries.
 - `src/data/course/lesson-types.ts`: discriminated block types, localized content, lesson sections, terms, questions and publication state.
 - `src/data/course/phases.ts`, `resources.ts`, `videos.ts`, `activities.ts`: shared phases, trusted references, video selections and preserved practical activities.
 - `src/components/lesson.tsx`: block renderer, lesson directory, terminology and quick checks.
@@ -56,13 +56,17 @@ Each localized field is `{ zh: ..., en: ... }`. Either language can be edited wi
 
 ### Add a verified video
 
-Edit `videosByWeek` in `src/data/course/videos.ts`, adding an object with `title`, `channel`, `youtubeId`, and a short `description` explaining its value. `titleEn` and `descriptionEn` provide English display text. Do not insert invented IDs or unverified recommendations. Empty weeks deliberately show an optional-video placeholder.
+Edit `videosByWeek` in `src/data/course/videos.ts`, adding an object with `title`, `channel`, `youtubeId`, and a short `description` explaining its value. `titleEn` and `descriptionEn` provide English display text. Do not insert invented IDs or unverified recommendations. Use an explicit empty array and a bilingual `videoNote` when a practice week intentionally has no video.
 
 The player validates 11-character YouTube IDs, embeds using `youtube-nocookie.com`, has a responsive 16:9 layout, a descriptive iframe title, lazy loading and full-screen support. Previously supported YouTube URL entries still work. A normal YouTube watch link remains available under every player. `afterSection` places a selection beside the relevant lesson; `verifiedAt` records the editorial check date. The resource library derives video entries from the same data.
 
+### Practical worksheets
+
+`worksheets.ts` defines stable field IDs and bilingual labels for Weeks 17, 18, 19, 20, 23 and 24. `lesson-worksheet.tsx` renders editable drafts, saves through `useCourseProgress()` and downloads a text copy. The progress parser validates known fields. Drafts remain separate from personal notes and completion checks; the learner decides when the task is complete.
+
 ## Progress and compatibility
 
-The key remains **`nutrition-course:progress:v1`**. There is no destructive migration. Existing week IDs, checklist IDs, notes, current week and recent activity are retained. The added `answers` object is optional, so pre-lesson records still load. Unknown quiz options are ignored; valid choices survive language changes, notes edits and checkbox edits.
+The key remains **`nutrition-course:progress:v1`**. There is no destructive migration. Existing week IDs, checklist IDs, notes, current week and recent activity are retained. The added `answers` and `worksheet` objects are optional, so pre-lesson records still load. Unknown quiz options are ignored; valid choices survive language changes, notes edits and checkbox edits.
 
 A week now requires only reading, practical work and review. References, videos and quizzes are optional. **Existing percentages may increase** because reference reading no longer contributes to the required denominator; no stored checks are deleted. Fully completed weeks remain complete. The current week remains the last one opened. Overall progress counts required checklist items, with completed weeks shown separately. Reset removes progress, notes and quiz choices, but retains language preference.
 
@@ -72,7 +76,7 @@ State stays in this browser; it is not uploaded or synced across devices. Storag
 
 ## Editorial scope and accuracy
 
-Week 1 uses original explanations and everyday family-food examples. Its references include WHO healthy diet, NIH ODS dietary reference definitions, MedlinePlus nutrition definitions and NIDDK energy-expenditure background, checked on 2026-09-25. References are available within the lesson and library, with no external reading required. Existing Harvard and KKM entries remain intact; unverified references remain labelled placeholders.
+Week 1 uses original explanations and everyday family-food examples. Its references include WHO healthy diet, NIH ODS dietary reference definitions, MedlinePlus nutrition definitions and NIDDK energy-expenditure background, checked on 2026-09-25. References are available within the lesson and library, with no external reading required. References across the course include WHO, NIH, NIDDK, NHS, Harvard, KKM, Cochrane and specialist professional bodies. All published reference IDs resolve to real URLs; resource backlinks are derived from lessons.
 
 This is education, not diagnosis, treatment, weight-loss targets or supplement prescribing. UL is explicitly an upper-limit reference, never a recommended target. Personal advice involving illness, pregnancy, allergies, medicines or supplements belongs with qualified health professionals.
 

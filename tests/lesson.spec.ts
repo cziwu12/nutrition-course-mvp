@@ -40,7 +40,7 @@ test("authored lessons have complete bilingual content, terms and references", (
     expect(week.checklist.find((c) => c.id === "resources")?.required).toBe(
       false,
     );
-    if (week.week > 20) expect(week.lesson.status).toBe("developing");
+    expect(week.lesson.status).toBe("published");
   }
   const old = {
     version: 1,

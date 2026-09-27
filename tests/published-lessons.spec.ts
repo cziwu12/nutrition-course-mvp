@@ -6,7 +6,7 @@ import { parseProgress, STORAGE_KEY } from "../src/lib/progress-store";
 test("published lesson graph and verified video metadata are consistent", () => {
   const published = weeks.filter((w) => w.lesson.status === "published");
   expect(published.map((w) => w.week)).toEqual(
-    Array.from({ length: 20 }, (_, i) => i + 1),
+    Array.from({ length: 24 }, (_, i) => i + 1),
   );
   expect(new Set(resources.map((r) => r.id)).size).toBe(resources.length);
   for (const week of published) {
@@ -79,7 +79,7 @@ test("new lesson recall persists across languages, notes edits, reloads and revi
   );
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
-  for (const n of Array.from({ length: 19 }, (_, i) => i + 2)) {
+  for (const n of Array.from({ length: 23 }, (_, i) => i + 2)) {
     const week = weeks[n - 1];
     const lesson = week.lesson;
     if (lesson.status !== "published") throw new Error(`Week ${n} missing`);
@@ -162,7 +162,7 @@ test("new lesson recall persists across languages, notes edits, reloads and revi
   const stored = parseProgress(
     await page.evaluate((key) => localStorage.getItem(key), STORAGE_KEY),
   );
-  for (let n = 2; n <= 20; n++) {
+  for (let n = 2; n <= 24; n++) {
     expect(stored.weeks[n].notes).toContain(`第${n}周笔记`);
     expect(stored.weeks[n].checks.topics).toBe(true);
     expect(Object.keys(stored.weeks[n].answers ?? {})).toHaveLength(1);
